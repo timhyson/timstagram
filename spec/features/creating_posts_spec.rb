@@ -5,6 +5,7 @@ feature 'Creating posts' do
     visit '/'
     click_link 'New Post'
   end
+
   scenario 'can create a post' do
     attach_file('Image', "spec/files/images/coffee.jpg")
     fill_in 'Caption', with: 'nom nom nom #coffeetime'
