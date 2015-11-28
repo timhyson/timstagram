@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Can see a list of posts on the index' do
+feature 'Index displays a list of posts' do
   scenario 'the index displays correct created job information' do
     job_one = create(:post, caption: 'This is post one')
     job_two = create(:post, caption: 'This is the second post')
