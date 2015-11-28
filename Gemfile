@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 gem 'simple_form'
 gem 'paperclip'
+gem 'factory_girl_rails'
 
 group :development, :test do
   gem 'byebug'
