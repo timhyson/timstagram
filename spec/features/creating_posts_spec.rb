@@ -17,6 +17,6 @@ feature 'Creating posts' do
   scenario 'a post needs an image to save' do
     fill_in 'Caption', with: 'No picture because YOLO'
     click_button 'Create Post'
-    expect(page).to have_content ('Halt, you fiend! You need an image to post here!')
+    expect(page).to have_content('Halt, you fiend! You need an image to post here!')
   end
 end

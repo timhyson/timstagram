@@ -13,6 +13,7 @@ gem 'haml'
 gem 'simple_form'
 gem 'paperclip'
 gem 'bootstrap-sass'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
