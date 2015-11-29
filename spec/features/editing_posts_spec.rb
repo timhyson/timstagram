@@ -2,14 +2,18 @@ require 'rails_helper'
 
 feature 'Editing Posts' do
   background do
-    job = create(:post)
+    user = create :user
+    post = create(:post)
 
+    sign_in_with (user)
     visit '/'
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
-    click_link 'Edit Post'
   end
 
   scenario 'Can edit a post' do
+    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    expect(page).to have_content('Edit Post')
+
+    click_link 'Edit Post'
     fill_in 'Caption', with: "Oh dear, you weren't meant to see this picture!"
     click_button 'Update Post'
 
@@ -17,7 +21,9 @@ feature 'Editing Posts' do
     expect(page).to have_content("Oh dear, you weren't meant to see this picture!")
   end
 
-  it "Won't update a post without an image" do
+  scenario "Won't update a post without an image" do
+    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    click_link 'Edit Post'
     attach_file('Image', 'spec/files/coffee.jpg.zip')
     click_button 'Update Post'
 
