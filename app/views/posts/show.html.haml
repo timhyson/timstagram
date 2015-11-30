@@ -1,8 +1,8 @@
 .posts-wrapper.row
   .post
     .post-head
-      .name
-        Tim Hyson
+      .user-name
+        = @post.user.user_name
     .image.center-block
       = image_tag @post.image.url(:medium)
     %p.caption

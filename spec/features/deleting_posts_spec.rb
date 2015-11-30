@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Deleting posts' do
   background do
     user = create :user
-    post = create(:post, caption: 'Abs for days.')
+    post = create(:post, caption: 'Abs for days.', user_id: user.id)
 
     sign_in_with user
   end
