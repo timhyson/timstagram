@@ -15,6 +15,7 @@ gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'devise'
 
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
