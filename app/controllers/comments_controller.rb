@@ -6,8 +6,10 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      flash[:success] = "Nice comment!"
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       flash[:alert] = "Check the comment form, something went wrong!"
       render root_path
@@ -19,8 +21,10 @@ class CommentsController < ApplicationController
 
     if @comment.user_id == current_user.id
       @comment.delete
-      flash[:notice] = "Comment deleted."
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       flash[:warning] = "That post doesn't belong to you!"
       redirect_to root_path

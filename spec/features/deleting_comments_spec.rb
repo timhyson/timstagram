@@ -1,28 +1,24 @@
 require 'rails_helper'
 
 feature 'Deleting comments' do
-  scenario 'user can delete their own comments' do
-    #user = create :user
-    #user_two = create(:user, id: 2,
-                             #email: 'bar@foo.com',
-                             #user_name: 'barfoo')
-    #post = create :post
-    #comment = create(:comment, user_id: user_two.id,
-                             #post_id: post.id)
-    #sign_in_with user_two
-    #save_and_open_page
-  #end
-
+  background do
     user = create :user
-    post = create(:post, user_id: user.id)
-    sign_in_with user
+    user_two = create(:user, id: 2,
+                             email: 'bar@foo.com',
+                             user_name: 'barfoo')
+    post = create :post
+    comment = create(:comment, user_id: user_two.id,
+                     post_id: post.id)
+    comment_two = create(:comment, id: 2,
+                                   post_id: post.id,
+                                   content: 'You guys are too kind x')
+    sign_in_with user_two
+  end
 
+  scenario 'user can delete their own comments' do
     visit '/'
-    fill_in "comment_content_#{post.id}", with: ';P'
-    click_button 'Submit'
-    expect(page).to have_content(';P')
-    expect(page).to have_content('Nice comment!')
-    click_link 'delete-1' # Dynamically add the id in your view
-    expect(page).not_to have_content('Nice comment!')
+
+    expect(page).to have_content('You guys are too kind x')
+    expect(page).not_to have_css('#delete-2')
   end
 end

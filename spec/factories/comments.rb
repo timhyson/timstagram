@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :comment do
-    user nil
-post nil
-content "MyText"
+    id 1
+    content "MyText"
+    user_id 1
+    post_id 1
   end
-
 end
