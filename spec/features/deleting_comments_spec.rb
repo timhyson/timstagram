@@ -19,7 +19,7 @@ feature 'Deleting comments' do
     visit '/'
 
     expect(page).to have_content('Nice post!')
-    click_link 'delete-2'
+    click_link 'delete-1'
     expect(page).not_to have_content('Nice post!')
   end
 
