@@ -29,4 +29,13 @@ feature 'Deleting comments' do
     expect(page).to have_content('You guys are too kind x')
     expect(page).not_to have_css('#delete-2')
   end
+
+  scenario 'user cannot delete a comment not belonging to them via urls' do
+    visit '/'
+
+    expect(page).to have_content('You guys are too kind x')
+    page.driver.submit :delete, "posts/1/comments/2", {}
+    expect(page).to have_content("That post doesn't belong to you!")
+    expect(page).to have_content('You guys are too kind x')
+  end
 end
