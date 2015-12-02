@@ -18,6 +18,14 @@ feature 'Deleting comments' do
   scenario 'user can delete their own comments' do
     visit '/'
 
+    expect(page).to have_content('Nice post!')
+    click_link 'delete-2'
+    expect(page).not_to have_content('Nice post!')
+  end
+
+  scenario 'user cannot delete a comment not belonging to them via the ui' do
+    visit '/'
+
     expect(page).to have_content('You guys are too kind x')
     expect(page).not_to have_css('#delete-2')
   end
