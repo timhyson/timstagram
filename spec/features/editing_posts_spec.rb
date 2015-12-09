@@ -18,7 +18,7 @@ feature 'Editing Posts' do
     expect(page).to have_content('Edit Post')
 
     click_link 'Edit Post'
-    fill_in 'Caption', with: "Oh dear, you weren't meant to see this picture!"
+    fill_in 'Add your caption', with: "Oh dear, you weren't meant to see this picture!"
     click_button 'Update Post'
 
     expect(page).to have_content("Post updated hombre")
