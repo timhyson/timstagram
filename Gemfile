@@ -15,6 +15,7 @@ gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'kaminari'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug'
